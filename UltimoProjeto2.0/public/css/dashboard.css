@@ -1,0 +1,516 @@
+/* ══════════════════════════════════════════════════════════════
+   UNIANIMAL — Dashboard Premium CSS
+   IoT Monitoring · Dark/Light Theme · Glassmorphism
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── IoT HEADER ── */
+.iot-header {
+  margin-bottom: var(--s6);
+}
+.iot-header__live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0,229,168,.08);
+  border: 1px solid rgba(0,229,168,.2);
+  border-radius: var(--rf);
+  padding: 5px 14px;
+  font-size: .72rem;
+  font-weight: 700;
+  color: var(--t-ink);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+/* ── REF TABLE (parâmetros) ── */
+.ref-table-wrap { margin-bottom: var(--s6); }
+.ref-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+@media (max-width: 600px) { .ref-grid { grid-template-columns: 1fr; } }
+
+.ref-card {
+  background: var(--bg-3);
+  border: 1px solid var(--b2);
+  border-radius: var(--r3);
+  padding: 16px;
+  transition: transform var(--t2), box-shadow var(--t2);
+}
+.ref-card:hover { transform: translateY(-2px); box-shadow: var(--sh-md); }
+.ref-card--ok   { border-color: rgba(16,208,120,.2);  }
+.ref-card--b    { border-color: rgba(0,196,255,.2);   }
+.ref-card--g    { border-color: rgba(245,158,11,.2);  }
+.ref-card__icon  { font-size: 1.5rem; margin-bottom: 6px; }
+.ref-card__title { font-weight: 700; font-size: .9rem; color: var(--txt); margin-bottom: 2px; }
+.ref-card__sub   { font-size: .72rem; color: var(--txt-3); margin-bottom: 10px; }
+.ref-card__val   { display: flex; flex-direction: column; gap: 3px; font-size: .72rem; color: var(--txt-2); }
+
+/* ── IoT CARD ── */
+.iot-card {
+  background: var(--bg-2);
+  border: 1px solid var(--b2);
+  border-radius: var(--r4);
+  padding: var(--s6);
+  margin-bottom: var(--s4);
+  box-shadow: var(--sh-card);
+  transition: border-color var(--t2), box-shadow var(--t2);
+}
+.iot-card:hover {
+  border-color: var(--bt);
+  box-shadow: var(--sh-t2);
+}
+.iot-card--err {
+  border-color: rgba(240,75,88,.35) !important;
+  box-shadow: 0 0 0 1px rgba(240,75,88,.12), var(--sh-md) !important;
+  animation: pulse-err 2s ease-in-out infinite;
+}
+.iot-card--warn {
+  border-color: rgba(245,158,11,.35) !important;
+}
+@keyframes pulse-err {
+  0%,100% { box-shadow: 0 0 0 1px rgba(240,75,88,.12), var(--sh-md); }
+  50%      { box-shadow: 0 0 20px rgba(240,75,88,.25), var(--sh-md); }
+}
+
+.iot-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--s5);
+}
+.iot-card__ava {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background: var(--bg-4);
+  border: 1px solid var(--b2);
+  flex-shrink: 0;
+}
+.iot-card__ava--ok   { border-color: rgba(16,208,120,.3);  }
+.iot-card__ava--warn { border-color: rgba(245,158,11,.3);  }
+.iot-card__ava--err  { border-color: rgba(240,75,88,.3);   }
+
+.iot-card__name { font-weight: 700; font-size: 1.05rem; color: var(--txt); }
+.iot-card__sub  { font-size: .72rem; color: var(--txt-3); margin-top: 2px; }
+
+.iot-status-badge {
+  transition: background .4s, color .4s;
+}
+
+/* Vitals grid */
+.iot-vitals {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: var(--s4);
+}
+@media (max-width: 500px) { .iot-vitals { grid-template-columns: repeat(2,1fr); } }
+
+.iot-vital {
+  background: var(--bg-3);
+  border: 1px solid var(--b);
+  border-radius: var(--r2);
+  padding: 14px 10px;
+  text-align: center;
+  transition: background var(--t2), transform var(--t2);
+}
+.iot-vital:hover { background: var(--bg-4); transform: scale(1.02); }
+.iot-vital__icon { font-size: 1.1rem; margin-bottom: 4px; }
+.iot-vital__val  {
+  font-size: 1.35rem;
+  font-weight: 700;
+  font-family: var(--f-display);
+  color: var(--t-ink);
+  letter-spacing: -.02em;
+  transition: color .3s;
+}
+.iot-vital__unit  { font-size: .65rem; color: var(--txt-3); margin-top: -2px; }
+.iot-vital__label { font-size: .68rem; color: var(--txt-2); margin-top: 4px; }
+
+/* Chart */
+.iot-chart-wrap {
+  margin-bottom: var(--s3);
+  background: var(--bg-3);
+  border-radius: var(--r2);
+  padding: 8px;
+  border: 1px solid var(--b);
+}
+
+.iot-card__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--s3);
+  padding-top: var(--s3);
+  border-top: 1px solid var(--b);
+}
+
+/* ── SIDEBAR badges ── */
+.sb__badge {
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--t-ink);
+  background: var(--t-dim2);
+  border: 1px solid var(--bt);
+  border-radius: var(--rf);
+  padding: 2px 10px;
+  margin: 6px 0 12px;
+  display: inline-block;
+}
+.sb__badge-n {
+  background: var(--err);
+  color: #fff;
+  font-size: .65rem;
+  font-weight: 700;
+  border-radius: var(--rf);
+  padding: 1px 6px;
+  margin-left: auto;
+}
+.sb__status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ok);
+  box-shadow: 0 0 6px rgba(16,208,120,.5);
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* ── THEME TOGGLE BUTTON ── */
+.theme-btn {
+  position: relative;
+  width: 56px;
+  height: 28px;
+  background: var(--bg-4);
+  border: 1px solid var(--b3);
+  border-radius: var(--rf);
+  cursor: pointer;
+  transition: background var(--t2), border-color var(--t2);
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+  flex-shrink: 0;
+}
+.theme-btn:hover { border-color: var(--bt); }
+.theme-btn__icon {
+  position: absolute;
+  font-size: .75rem;
+  transition: opacity var(--t2);
+}
+.theme-btn__sun  { right: 6px; opacity: 0; }
+.theme-btn__moon { left: 6px; opacity: 1; }
+.theme-btn__knob {
+  width: 20px;
+  height: 20px;
+  background: var(--t-grad);
+  border-radius: 50%;
+  position: absolute;
+  left: 4px;
+  transition: transform var(--t2), background var(--t2);
+  box-shadow: 0 1px 4px rgba(0,0,0,.4);
+}
+
+/* Light mode toggle state */
+[data-theme="light"] .theme-btn__sun  { opacity: 1; }
+[data-theme="light"] .theme-btn__moon { opacity: 0; }
+[data-theme="light"] .theme-btn__knob { transform: translateX(28px); }
+[data-theme="light"] .theme-btn { background: #e8f5f0; border-color: rgba(0,180,130,.3); }
+
+/* ── LIGHT MODE OVERRIDES (dashboard-only components) ──
+   Shared design tokens (--bg*, --txt*, --b*, --bt) and the site-wide
+   component overrides (.panel, .an-card, .form-input, .form-select,
+   .nudge) live once, in style.css, so the design system has a single
+   source of truth. Only dashboard-specific components are overridden
+   here. */
+[data-theme="light"] .sb         { background: #FFFFFF; border-right: 1px solid rgba(0,0,0,.08); }
+[data-theme="light"] .iot-card   { background: #FFFFFF; border-color: rgba(0,0,0,.1); }
+[data-theme="light"] .iot-vital  { background: #F5F8FC; border-color: rgba(0,0,0,.08); }
+[data-theme="light"] .ref-card   { background: #F5F8FC; border-color: rgba(0,0,0,.08); }
+[data-theme="light"] .topbar     { background: rgba(255,255,255,.9); border-bottom-color: rgba(0,0,0,.08); }
+[data-theme="light"] .data-table th { background: #EDF1F7; }
+[data-theme="light"] .data-table td { border-bottom-color: rgba(0,0,0,.06); }
+[data-theme="light"] .sc         { background: #FFFFFF; border-color: rgba(0,0,0,.08); }
+[data-theme="light"] .al-row     { background: rgba(240,75,88,.05); }
+[data-theme="light"] .iot-chart-wrap { background: #F5F8FC; }
+
+/* ══════════════════════════════════════════════════════════════
+   PAINEL DO CLIENTE — componentes novos (dashboard, meus animais,
+   localização da coleira, perfil). Usam os tokens do design system
+   para funcionar corretamente em light (padrão) e dark.
+   ══════════════════════════════════════════════════════════════ */
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--s4);
+  margin-bottom: var(--s6);
+}
+
+.stat-card {
+  background: var(--bg-2);
+  border: 1px solid var(--b2);
+  border-radius: var(--r3);
+  padding: var(--s5);
+  box-shadow: var(--sh-card);
+  transition: transform var(--t2), box-shadow var(--t2);
+}
+.stat-card:hover { transform: translateY(-2px); box-shadow: var(--sh-md); }
+.stat-card--alert { border-color: var(--err); background: var(--err-bg); }
+.stat-card__ico   { font-size: 1.4rem; display: block; margin-bottom: 8px; }
+.stat-card__value { font-size: var(--tx-2xl); font-weight: 700; color: var(--txt); font-family: var(--f-display); }
+.stat-card__label { font-size: var(--tx-xs); color: var(--txt-3); margin-top: 2px; }
+
+.dp-section        { margin-bottom: var(--s8); }
+.dp-section__head  { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--s4); }
+.dp-section__head h2 { font-size: var(--tx-lg); font-family: var(--f-display); color: var(--txt); }
+
+.empty-state {
+  text-align: center;
+  padding: var(--s10) var(--s4);
+  border: 1px dashed var(--b3);
+  border-radius: var(--r3);
+  color: var(--txt-3);
+  background: var(--bg-2);
+}
+.empty-state__ico { font-size: 2.2rem; display: block; margin-bottom: 10px; }
+
+.animais-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--s4);
+}
+
+.animal-card {
+  display: block;
+  background: var(--bg-2);
+  border: 1px solid var(--b2);
+  border-radius: var(--r3);
+  padding: var(--s4);
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--t2), box-shadow var(--t2), border-color var(--t2);
+  box-shadow: var(--sh-card);
+}
+.animal-card:hover { transform: translateY(-3px); box-shadow: var(--sh-md); border-color: var(--bt); }
+.animal-card__head  { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.animal-card__emoji { font-size: 1.6rem; }
+.animal-card__nome  { font-size: var(--tx-md); font-weight: 700; color: var(--txt); margin-bottom: 2px; }
+.animal-card__meta  { font-size: var(--tx-xs); color: var(--txt-3); margin-bottom: 10px; }
+.animal-card__coleira {
+  display: flex; justify-content: space-between; font-size: var(--tx-xs);
+  color: var(--txt-2); border-top: 1px solid var(--b); padding-top: 8px;
+}
+.animal-card__coleira--sem { color: var(--txt-4); justify-content: flex-start; }
+
+.alertas-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.alertas-list__item {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--warn-bg); border: 1px solid rgba(245,158,11,.25);
+  border-radius: var(--r2); padding: var(--s3) var(--s4); font-size: var(--tx-sm);
+  color: var(--txt-2);
+}
+.alertas-list__item > div { flex: 1; }
+
+.badge {
+  display: inline-block; padding: 3px 10px; border-radius: var(--rf);
+  font-size: var(--tx-xs); font-weight: 600;
+}
+.badge--ok   { background: var(--ok-bg);   color: var(--ok);   }
+.badge--warn { background: var(--warn-bg); color: var(--warn); }
+.badge--err  { background: var(--err-bg);  color: var(--err);  }
+
+/* ── FREQUÊNCIA CARDÍACA (gráfico do dashboard) ── */
+.bpm-select {
+  background: var(--bg-3);
+  color: var(--txt);
+  border: 1px solid var(--b2);
+  border-radius: var(--r2);
+  padding: 6px 12px;
+  font-size: var(--tx-sm);
+  cursor: pointer;
+}
+.bpm-resumo {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: var(--s4);
+}
+@media (max-width: 500px) { .bpm-resumo { grid-template-columns: repeat(2, 1fr); } }
+.bpm-chart { position: relative; height: 280px; }
+.bpm-vazio {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--txt-3); font-size: var(--tx-sm); text-align: center; padding: 16px;
+}
+.bpm-vazio[hidden] { display: none; }
+.bpm-info { font-size: var(--tx-xs); color: var(--txt-3); }
+[data-theme="light"] .bpm-select { background: #FFFFFF; border-color: rgba(0,0,0,.12); }
+
+/* Tabela de referência de batimentos por porte */
+.bpm-ref__title  { font-size: var(--tx-md); font-weight: 700; color: var(--txt); margin-bottom: var(--s4); }
+.bpm-ref__scroll { overflow-x: auto; }
+.bpm-ref__scroll .data-table { min-width: 560px; }
+.bpm-ref__nota   { margin-top: var(--s4); line-height: 1.5; }
+.bpm-ref tr.bpm-ref__atual td { background: var(--t-dim); }
+.bpm-ref tr.bpm-ref__atual td:first-child { box-shadow: inset 3px 0 0 var(--t); }
+.bpm-faixa { margin-top: 6px; }
+.bpm-faixa[hidden] { display: none; }
+
+/* Botão de menu (sanduíche): só é útil no celular, onde a sidebar fica
+   escondida. Em telas maiores a sidebar já está sempre visível. */
+@media (min-width: 901px) {
+  #sidebar-btn { display: none; }
+}
+
+/* ── Mapa da rota (tela de detalhes da coleira) ── */
+.mapa-rota {
+  height: 380px;
+  border-radius: var(--r2);
+  border: 1px solid var(--b2);
+  overflow: hidden;
+  z-index: 0;            /* mantém o mapa abaixo da sidebar no celular */
+}
+.mapa-legenda {
+  display: flex; flex-wrap: wrap; gap: 16px;
+  margin-top: var(--s3);
+  font-size: var(--tx-xs); color: var(--txt-3);
+}
+.mapa-legenda span { display: inline-flex; align-items: center; gap: 6px; }
+.mapa-legenda__ponto {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--t2); border: 2px solid #fff; box-shadow: 0 0 0 1px var(--b3);
+}
+.mapa-legenda__ponto--inicio { background: var(--ok); }
+.mapa-legenda__ponto--atual  { background: var(--err); width: 14px; height: 14px; }
+.bpm-ref + .bpm-ref { margin-top: var(--s4); }
+
+/* ── Ícone (emoji) + texto ──
+   Cada emoji tem largura própria; .ico dá a todos a mesma caixa, alinhada
+   ao centro da linha, e o mesmo respiro até o texto. Uso:
+   <span class="ico" aria-hidden="true">❤️</span>Texto */
+.ico {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.3em;
+  height: 1.3em;
+  margin-right: .55em;
+  font-size: .95em;
+  line-height: 1;
+  vertical-align: -.2em;
+  flex-shrink: 0;
+}
+/* Onde o pai já espaça os filhos com gap (botões, linhas flex), não somar margem */
+.btn > .ico,
+.topbar__title > .ico { margin-right: 0; }
+.btn > .ico           { font-size: 1em; }
+[style*="gap:"] > .ico { margin-right: 0; }
+
+/* Títulos com ícone: alinhamento único em todas as telas do painel */
+.dp-section__head h2,
+.bpm-ref__title,
+.topbar__title { display: inline-flex; align-items: center; }
+.topbar__title { gap: .5em; }
+.dp-section__head h2 > .ico { font-size: .9em; margin-right: .6em; }
+
+/* ── Cabeçalho dos painéis (Ficha do Animal, Localização...) ──
+   Antes a linha decorativa (::after) ficava no fim e empurrava título,
+   botões e selo todos para a esquerda, colados. Agora a ordem é:
+   título │ linha │ ações, com respiro entre cada parte. */
+.panel__head {
+  gap: var(--s4);
+  justify-content: flex-start;
+  min-height: 36px;
+}
+.panel__head > :first-child { display: inline-flex; align-items: center; white-space: nowrap; }
+.panel__head::after { order: 1; margin-left: 0; min-width: var(--s6); }
+.panel__head > :not(:first-child) {
+  order: 2;
+  /* Ações e textos auxiliares não herdam o estilo de título (caixa alta) */
+  text-transform: none;
+  letter-spacing: normal;
+  font-family: var(--f-ui);
+  font-weight: 500;
+}
+.panel__actions { display: flex; align-items: center; gap: var(--s3); }
+.panel__head .chip { padding: 5px 12px; letter-spacing: .05em; }
+
+@media (max-width: 600px) {
+  .panel__head { flex-wrap: wrap; }
+  .panel__head::after { display: none; }
+  .panel__head > :not(:first-child) { margin-left: auto; }
+}
+
+/* Cabeçalho das seções: título e ação (botão/seletor) nunca encostam */
+.dp-section__head { gap: var(--s4); flex-wrap: wrap; }
+/* Ações em linha de tabela (Ver / Editar / Excluir) */
+.data-table .panel__actions { gap: var(--s2); }
+.data-table .panel__actions form { display: flex; }
+
+/* ══════════════════════════════════════════════════════════════
+   ORIENTAÇÃO DE BATIMENTOS — mesma tabela do app
+   (partials/bpm-referencia.blade.php)
+   ══════════════════════════════════════════════════════════════ */
+.bpm-ref { padding: var(--s6) var(--s6) var(--s5); }
+.bpm-ref__head  { display: flex; align-items: center; gap: 12px; }
+.bpm-ref__icone { color: var(--t); flex-shrink: 0; }
+.bpm-ref .bpm-ref__title { font-size: 1.35rem; font-weight: 600; margin: 0; letter-spacing: -.01em; }
+.bpm-ref__sub   { margin: 6px 0 var(--s5); font-size: var(--tx-sm); color: var(--txt-3); }
+
+.bpm-tabela { width: 100%; border-collapse: collapse; font-size: var(--tx-sm); min-width: 560px; }
+.bpm-tabela th {
+  text-align: left; font-weight: 600; padding: 12px 8px;
+  color: var(--txt); border-bottom: 1px solid var(--b2);
+}
+.bpm-tabela td {
+  padding: 12px 8px; color: var(--txt-2); line-height: 1.55;
+  border-bottom: 1px solid var(--b2); vertical-align: middle;
+}
+.bpm-tabela th:first-child, .bpm-tabela td:first-child { width: 30%; }
+.bpm-tabela th:nth-child(2), .bpm-tabela td:nth-child(2) { width: 23%; }
+.bpm-tabela th:nth-child(3), .bpm-tabela td:nth-child(3) { width: 23%; }
+
+.bpm-tabela__normal     { color: var(--ok)   !important; }
+.bpm-tabela__alerta     { color: var(--warn) !important; }
+.bpm-tabela__emergencia { color: var(--err)  !important; }
+
+/* Linha do animal exibido: fundo verde-petróleo, negrito e ★ */
+.bpm-tabela__estrela { display: none; }
+.bpm-tabela tr.bpm-ref__atual td { background: rgba(0,229,168,.09); color: var(--txt); font-weight: 700; }
+.bpm-tabela tr.bpm-ref__atual td:first-child { box-shadow: none; }
+.bpm-tabela tr.bpm-ref__atual .bpm-tabela__estrela { display: inline; }
+
+.bpm-legenda { list-style: none; margin: var(--s5) 0 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.bpm-legenda li { display: flex; align-items: flex-start; gap: 10px; font-size: var(--tx-sm); color: var(--txt-2); line-height: 1.5; }
+.bpm-legenda strong { font-weight: 600; }
+.bpm-legenda__ico { flex-shrink: 0; margin-top: 1px; }
+.bpm-legenda__ico--normal     { color: var(--ok); }
+.bpm-legenda__ico--alerta     { color: var(--warn); }
+.bpm-legenda__ico--emergencia { color: var(--err); }
+
+.bpm-ref .bpm-ref__nota { margin-top: var(--s5); font-size: var(--tx-xs); color: var(--txt-3); line-height: 1.5; }
+
+/* Modo claro: tons mais escuros para o texto colorido ter contraste no branco */
+[data-theme="light"] .bpm-tabela__normal,
+[data-theme="light"] .bpm-legenda__ico--normal     { color: #0A8F55 !important; }
+[data-theme="light"] .bpm-tabela__alerta,
+[data-theme="light"] .bpm-legenda__ico--alerta     { color: #B45309 !important; }
+[data-theme="light"] .bpm-tabela__emergencia,
+[data-theme="light"] .bpm-legenda__ico--emergencia { color: #D6293A !important; }
+[data-theme="light"] .bpm-ref__icone { color: #00A876; }
+[data-theme="light"] .bpm-tabela tr.bpm-ref__atual td { background: rgba(0,168,118,.10); }
+
+/* Lista de alertas reais (tabela alertas) */
+.alertas-list__item > div { display: flex; flex-direction: column; gap: 2px; }
+.alertas-list__item--err { background: var(--err-bg); border-color: rgba(240,75,88,.3); }
+.alertas-list__msg  { color: var(--txt-2); }
+.alertas-list__hora { font-size: var(--tx-xs); color: var(--txt-3); }
